@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Create New User</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+
+	<div class = "header">
+		<h5><strong>HireMe</strong><h5>
+
+	</div>
+
+	<div class= "leftbar">
+		<p><img src = "home.png" alt = "home page icon"><a href="index.html">Home</a></p>
+		<p><img src = "add-user.png" alt = "add user icon"><a href= "new_user_form.html">New User</a></p>
+		<p><img src = "create.png" alt = "new job icon"><a href="new_job.html">New Job</a></p>
+		<p><img src = "shutdown.png" alt = "logout icon"><a href="http://mail.yahoo.com" target="_blank">Logout</a></p>
+
+	</div>
+
+	<div class = "content">
+		<h2>New User</h2>
+		<form action="new_job.php" method = "POST">
+			<strong>Job Title</strong><br><br><input id = "title" class = "box" type="text" name="title" placeholder = "e.g: Senior Designer or Product Manager" required><br><br>
+		  	<strong>Job Description</strong><br><br><textarea id = "description" class = "box" name = "description" rows="10" cols="50" required></textarea><br><br>
+
+		  	<select name = "category" required>
+		  		<option value = "" disabled selected><strong>Select a Category</strong></option>
+			  	<option value="Sales and Marketing">Sales and Marketing</option>
+			  	<option value="Programming">Programming</option>
+			  	<option value="Business and Management">Business and Management</option>
+			  	<option value="Design">Design</option>
+			  	<option value="Customer Support">Customer Support</option>
+			</select>
+			<br><br>
+		  	<strong>Company</strong><br><br><input id = "company" class = "box" type="text" name="company" required><br><br>
+		  	<strong>Company Location</strong><br><br><input id = "location" class = "box" type="text" name="location" placeholder = "e.g: Kingston,Jamaica" required><br><br>
+
+
+		  	<input id = "submit" type="submit" value="Submit">
+
+		</form>
+
+		
+
+
+	</div>
+
+
+
+
+</body>
+</html>
