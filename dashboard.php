@@ -27,7 +27,7 @@
     	    
     	    <section>
     	        <div class="available">
-    	            <h3><strong>Available Jobs</strong></h3>
+    	            <h3 style = "font-size:20px;"><strong>Available Jobs</strong></h3>
     	            <table>
     	                <thead>
     	                    <tr>
@@ -39,31 +39,53 @@
     	               </thead>
     	               
     	               <tbody>
-    	                   <?php
     	                   
-   	                    session_start();
+    	                   <tr>
+    	                       <td>Jamaica Gleaner</td>
+    	                       <td><a href = "">Product Marketing Manager</td>
+    	                       <td>Sales & Marketing</td>
+    	                       <td>Nov 3, 2018</td>
+    	                   </tr>
+    	                   <tr>
+    	                       <td>UWI - MITS</td>
+    	                       <td> <a href = "">Software Engineer</td>
+    	                       <td>Programming</td>
+    	                       <td>Nov 2, 2018</td>
+    	                   </tr>
+    	                   <tr>
+    	                       <td>NCB
+    	                       <td>Business Analyst - Scrum Master</td>
+    	                       <td>Business & Management</td>
+    	                       <td>Nov 1, 2018</td>
+    	                   </tr>
+    	                   <tr>
+    	                       <td>Jamaica Yellow Pages</td>
+    	                       <td>UX/UI Designer</td>
+    	                       <td>Design</td>
+    	                       <td>Oct 20, 2018</td>
+    	                   </tr>
+    	                   <tr>
+    	                       <td>UWI - Bursary</td>
+    	                       <td>Director Customer Support</td>
+    	                       <td>Customer Support</td>
+    	                       <td>Oct 20, 2018</td>
+    	                   </tr>
     	                   
-    	                   $con = mysqli_connect("localhost", "admin", "password123");
-    	                   if(!$con){
-    	                   die("Cannot connect: ".mysql_error());}
-    	                   
-    	                   $result=$con->query("SELECT * FROM Jobs");
-    	                   $result->execute();
-    	                       echo "<tr>";
-    	                       echo "<td>". ['company_name'] . "</td>";
-    	                       echo "<td>". ['job_title'] . "</td>";
-    	                       echo "<td>". ['category'] . "</td>";
-    	                       echo "<td>". ['date_posted'] . "</td>";
-    	                   
-    	                   ?>
+    	                   <tr>
+    	                       <td>Sagicor Bank</td>
+    	                       <td>Senior Systems Engineer</td>
+    	                       <td>DevOps & Sysadmin</td>
+    	                       <td>Oct 20, 2018</td>
+    	                   </tr>
+    	       
+    	       
 
 
-    	                   
-    	                   
+    	   
     	               </tbody>
     	            </table>
     	            
-    	        </div> <br><br>  <br><br>  <br><br>
+    	        </div> <br><br> 
     	        <div class="applied">
     	            <h3><strong>Jobs Applied For</strong></h3>
     	            <table>
@@ -75,6 +97,20 @@
     	                        <th>Date</th>
     	                    </tr>
     	               </thead>
+    	               <tbody>
+    	                   <tr>
+    	                      <td>Jamaica Yellow Pages</td>
+    	                       <td>UX/UI Designer</td>
+    	                       <td>Design</td>
+    	                       <td>Oct 21, 2018</td> 
+    	                   </tr>
+    	                    <tr>
+    	                      <td>Basecamp</td>
+    	                       <td>Software Engineer</td>
+    	                       <td>Programming</td>
+    	                       <td>May 5, 2018</td> 
+    	                   </tr>
+    	               </tbody>
     	            </table>
     	            
     	        </div>
