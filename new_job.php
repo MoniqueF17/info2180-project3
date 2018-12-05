@@ -1,6 +1,6 @@
 <?php
 
-required 'new_user.php';
+require 'config.php';
 
 //declare variables
 $title = "";
@@ -21,10 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 	//Insert in to table
-	$sql = "INSERT INTO Jobs " . "(job_title, job_description, category, company_name, company_location)". "VALUES('$title','$description', '$category', '$company', '$location')";
+	$sql = "INSERT INTO Jobs (job_title, job_description, category, company_name, company_location)
+	VALUES('$title','$description', '$category', '$company', '$location')";
 
 
-
+}
 
 
 ?>

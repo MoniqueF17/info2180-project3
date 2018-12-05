@@ -40,25 +40,8 @@ window.onload = function(){
 
 	}
 	
-	 var httpRequest;
-        
-        makeRequest();
-        
-        function makeRequest(){
-            httpRequest = new XMLHttpRequest();
-            httpRequest.onreadystatechange = request;
-            httpRequest.open('POST', "/new_user.php", true);
-            httpRequest.send();
-        }
-        
-        function request(){
-            if (httpRequest.readyState === XMLHttpRequest.DONE){
-                if (httpRequest.status === 200){
-                    document.getElementById('result').innerHTML = httpRequest.responseText;
-                } else {
-                    alert('Bad request');
-                }
-            }
+     
 	
-}
+
+
 };

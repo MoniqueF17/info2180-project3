@@ -1,4 +1,7 @@
 <?php
+
+require 'config.php';
+
 //declare variables
 $fname = "";
 $lname = "";
@@ -7,58 +10,53 @@ $pwordHash = "";
 $email = "";
 $tele = "";
 
-//initialize variables
-$servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "Hireme";
+//store form data in variables
+$fname = inputCheck($_POST["fname"]);
+$lname = inputCheck($_POST["lname"]);
+$pword = inputCheck($_POST["pword"]);
+$email = inputCheck($_POST["email"]);
+$tele = inputCheck($_POST["tele"]);
 
-//create connection
-$conn = new mysqli($servername,$username,$password,$dbname);
-
-//check connection
-if ($conn -> connect_error){
+//Insert validated form data into database table
+if (validateNewUserForm($fname,$lname,$pword,$email,$tele) == true){
+    //Insert data into table
+    $sql = "INSERT INTO Users (FirstName, LastName, password, telephone, email)
+    VALUES('$fname','$lname', '$pword', '$tele', '$email')";
     
-    die("connection Failed: " .$conn -> connect_error);
+    $conn->exec($sql);
+    
 }
-
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    //store form data in variables
-    $fname = inputCheck($_POST["fname"]);
-    $lname = inputCheck($_POST["lname"]);
-    $pword = inputCheck($_POST["pword"]);
-    $email = inputCheck($_POST["email"]);
-    $tele = inputCheck($_POST["tele"]);
-
-    //validate form data
-    if (!preg_match("/^[a-zA-Z]*$/",$fname) || !preg_match("/^[a-zA-Z]*$/",$lname)){
-        echo "<script type = 'text/javascript'> alert("Only letters are allowed in tis field"); </script>";
-    }
     
-    if (!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}$/",$pword)){
-        echo "<script type = 'text/javascript'> alert("Password is insufficient\nPlease enter a valid password"); </script>";
-    }
+//validate form data
+function validateNewUserForm($fname,$lname,$pword,$email,$tele){
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        
+        
+        if (!preg_match("/^[a-zA-Z]*$/",$fname) || !preg_match("/^[a-zA-Z]*$/",$lname)){
+            echo "<script type = 'text/javascript'> alert('Only letters are allowed in this field'); </script>";
+            return false;
+        }
+        
+        if (!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}$/",$pword)){
+            echo "<script type = 'text/javascript'> alert('Password is insufficient\nPlease enter a valid password'); </script>";
+            return false;
+        }
+        
+        if (emailValidator($email) == false){
+            echo "<script type = 'text/javascript'> alert('Not a valid email address'); </script>";
+            return false;
+    	}
+    	
+        if (!preg_match("/^(()?\d{3}())?(-|\s)?\d{3}(-|\s)?\d{4}$/",$tele)){
+            echo "<script type = 'text/javascript'> alert('Invalid number format'); </script>";
+            return false;
+        }
     
-    if (emailValidator($email) == false){
-        echo "<script type = 'text/javascript'> alert("Not a valid email address"); </script>";
-	
-	}
-	
-    if (!preg_match("/^(()?\d{3}())?(-|\s)?\d{3}(-|\s)?\d{4}$/",$tele)){
-        echo "<script type = 'text/javascript'> alert("Invalid number format"); </script>";
     }
-
+    //hash password
+    $pword = password_hash($pword, PASSWORD_DEFAULT);
+    return true;
 }
-
-//hash password
-$pwordHash = password_hash($pword, PASSWORD_DEFAULT);
-
-//Insert data into table
-
-$sql = "INSERT INTO Users " . "(FirstName, LastName, password, telephone, email)". "VALUES('$fname','$lname', '$pwordHash', '$tele', '$email')";
-
-
-
 
 
 //Checks if email is valid
@@ -90,13 +88,7 @@ function emailValidator($email){
     return true;
 }
 
-//Cleans input from user
-Function inputCheck($data){
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+
 
 
 

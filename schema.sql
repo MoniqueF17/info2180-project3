@@ -1,6 +1,6 @@
 
 CREATE DATABASE Hireme;
-
+USE Hireme;
 
 CREATE TABLE Users(
     id int(6) unsigned auto_increment primary key,
@@ -32,4 +32,4 @@ CREATE TABLE Jobs Applied For(
 /*SELECT HASHBYTES('SHA1', 'password123');*/
 
 INSERT INTO Users (FirstName, LastName, password, telephone, email)
-VALUES ('Admin', 'Administrator','HASHBYTES('SHA1', 'password123')', '876-999-9999', 'admin@hireme.com')";
+VALUES ("Admin", "Administrator","HASHBYTES("SHA1", "password123")", "876-999-9999", "admin@hireme.com");
